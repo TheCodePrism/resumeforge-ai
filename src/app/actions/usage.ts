@@ -32,7 +32,7 @@ export async function getAIUsageStatus() {
   }
 
   // Guest
-  const headerList = headers()
+  const headerList = await headers()
   const ip = headerList.get('x-forwarded-for') || '127.0.0.1'
 
   const guestUsage = await prisma.guestUsage.findUnique({ where: { ip } })
